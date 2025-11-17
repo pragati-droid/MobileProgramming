@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PetBuddy - Pet Care Assistant</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    
+    <header>
+        <div class="logo">PetBuddy</div>
+
+        <div class="hamburger">&#9776;</div>
+
+        <nav class="desktop-nav">
+            <a href="#">Home</a>
+            <a href="#">My Pets</a>
+            <a href="#">Reminders</a>
+            <a href="#">About</a>
+        </nav>
+    </header>
+
+    <div class="side-menu">
+        <ul>
+            <li>Home</li>
+            <li>My Pets</li>
+            <li>Reminders</li>
+            <li>About</li>
+        </ul>
+    </div>
+
+    <section class="container">
+        <h1 class="page-title">My Pets</h1>
+
+        <button id="addPetBtn" class="add-btn">+ Add Pet</button>
+
+        <div id="petList" class="pet-list"></div>
+    </section>
+
+    <div class="popup" id="popupForm">
+        <div class="popup-content">
+            <h2>Add New Pet</h2>
+            <input type="text" id="petName" placeholder="Pet Name">
+            <input type="text" id="petType" placeholder="Pet Type (Dog/Cat)">
+            <input type="number" id="petAge" placeholder="Pet Age">
+            <button id="savePet">Save</button>
+            <button id="closePopup">Close</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
