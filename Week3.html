@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 3 Practice</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+  <script>
+    $(document).ready(function(){
+      $(".button").click(function(){
+        $("#p1").fadeIn();
+        $("#login").fadeIn("slow");
+    });
+    $("#div1").dblclick(function(){
+      $(this).fadeOut();
+    })
+
+  
+      $("#p1").on({
+        mouseenter: function(){
+          $(this).css("background-color", "grey");
+        },
+        mouseleave: function(){
+          $(this).css("background-color","brown");
+        },
+  
+      });
+
+      $("#login").focus(function(){
+        $(this).css("color", "blue");
+      });
+
+    });
+
+  </script>
+</head>
+
+<body>
+  <div id="div1" style="background-color: lightslategray; padding: 20px;">
+    <button class="button">Click me!</button>
+    <p id="p1" style="display:none;">This is week 3 practice session. </p> <br>
+
+  </div>
+</body>
+</html>
