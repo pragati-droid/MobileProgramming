@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #7b2ff7, #00c6ff);
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 380px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 25px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 13px;
+            margin: 8px 0;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background-color: #ffcc00;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #ffaa00;
+        }
+
+        .msg-box {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 10px;
+            color: white;
+        }
+
+        .actions button {
+            padding: 6px 10px;
+            margin-right: 5px;
+            margin-top: 8px;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Contact Us</h2>
+
+        <form id="contactForm">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <textarea id="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+
+        <h3 style="color: white; margin-top: 20px;">Saved Messages</h3>
+        <div id="messages"></div>
+    </div>
+
+    <!-- Firebase SDK V8 -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+    <!-- Your Firebase + App Logic -->
+    <script>
+        // Your Firebase config (WORKING)
+        const firebaseConfig = {
+            apiKey: "AIzaSyDgkcWA8_fvgDNrBCqkM6fAWTxF8q1wuGE",
+            authDomain: "mobileapp-d293a.firebaseapp.com",
+            databaseURL: "https://mobileapp-d293a-default-rtdb.firebaseio.com",
+            projectId: "mobileapp-d293a",
+            storageBucket: "mobileapp-d293a.appspot.com",
+            messagingSenderId: "98407091836",
+            appId: "1:98407091836:web:2c4c80a2b8dcb5ca2ec3f9"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
+
+        // Handle form submit
+        document.getElementById("contactForm").addEventListener("submit", submitForm);
+
+        function submitForm(e) {
+            e.preventDefault();
+
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let message = document.getElementById("message").value;
+
+            let newRef = db.ref("contacts").push();
+
+            newRef.set({
+                id: newRef.key,
+                name: name,
+                email: email,
+                message: message
+            });
+
+            document.getElementById("contactForm").reset();
+        }
+
+        db.ref("contacts").on("value", (snapshot) => {
+            let output = "";
+            snapshot.forEach((child) => {
+                let data = child.val();
+
+                output += `
+                    <div class="msg-box">
+                        <strong>Name:</strong> ${data.name}<br>
+                        <strong>Email:</strong> ${data.email}<br>
+                        <strong>Message:</strong> ${data.message}<br>
+
+                        <div class="actions">
+                            <button onclick="editMsg('${data.id}','${data.name}','${data.email}','${data.message}')">Edit</button>
+                            <button onclick="delMsg('${data.id}')">Delete</button>
+                        </div>
+                    </div>
+                `;
+            });
+            document.getElementById("messages").innerHTML = output;
+        });
+
+        // DELETE MESSAGE
+        function delMsg(id) {
+            db.ref("contacts/" + id).remove();
+        }
+
+        // EDIT MESSAGE
+        function editMsg(id, oldName, oldEmail, oldMsg) {
+            let newName = prompt("Edit Name:", oldName);
+            let newEmail = prompt("Edit Email:", oldEmail);
+            let newMessage = prompt("Edit Message:", oldMsg);
+
+            db.ref("contacts/" + id).update({
+                name: newName,
+                email: newEmail,
+                message: newMessage
+            });
+        }
+    </script>
+
+</body>
+
+</html>
+
+
