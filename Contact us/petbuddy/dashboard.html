@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PetBuddy Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/dashboard.css">
+</head>
+<body>
+
+<!-- Hamburger Drawer Menu -->
+<div id="drawer" class="drawer">
+  <span class="close-btn" onclick="toggleDrawer()">×</span>
+  <ul>
+    <li>🏠 Home</li>
+    <li>📅 Schedule</li>
+    <li>➕ Add Pet</li>
+    <li>🔔 Notifications</li>
+    <li>⚙️ Settings</li>
+  </ul>
+</div>
+
+<!-- Top Bar -->
+<header class="topbar">
+  <span class="hamburger" onclick="toggleDrawer()">☰</span>
+  <h2 class="logo">🐾 PetBuddy</h2>
+  <span class="profile">👤</span>
+</header>
+
+<main class="container">
+
+  <!-- Welcome Section -->
+  <section class="welcome">
+    <h3>Hello, Pet Parent 👋</h3>
+    <p>Here’s today’s overview</p>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats">
+    <div class="stat-card">
+      <h2>2</h2>
+      <p>Total Pets</p>
+    </div>
+    <div class="stat-card">
+      <h2>5</h2>
+      <p>Today’s Tasks</p>
+    </div>
+    <div class="stat-card">
+      <h2>3</h2>
+      <p>Completed</p>
+    </div>
+  </section>
+
+  <!-- Quick Actions -->
+  <section class="quick-title">
+    <h4>Quick Actions</h4>
+  </section>
+
+  <section class="quick-grid">
+    <div class="quick-card">
+      <h3>🐶 Pet Profile</h3>
+      <p>View and manage your pets</p>
+    </div>
+    <div class="quick-card">
+      <h3>🍗 Feeding</h3>
+      <p>Today’s reminders & logs</p>
+    </div>
+    <div class="quick-card">
+      <h3>💉 Vaccinations</h3>
+      <p>Health & vaccine records</p>
+    </div>
+    <div class="quick-card">
+      <h3>✂️ Daily Care</h3>
+      <p>Bath, Grooming, Walks, Tasks</p>
+    </div>
+    <div class="quick-card alert">
+      <h3>🚨 Lost Pet Alert</h3>
+      <p>Generate missing poster</p>
+    </div>
+  </section>
+
+  <!-- Pet Carer Section -->
+   <section class="pet-carer-title">
+  <h4>Pet Carer</h4>
+  <p>Whom do you want to work with?</p>
+</section>
+
+<section class="pet-carer-grid">
+
+  <div class="carer-card">
+    <h3>🐾 Carer 1</h3>
+    <p class="status">Available</p>
+
+    <div class="booking-row">
+      <input type="date" class="booking-date">
+      <button onclick="bookCarer('Carer 1')">Book</button>
+    </div>
+  </div>
+
+  <div class="carer-card">
+    <h3>🐾 Carer 2</h3>
+    <p class="status">Available</p>
+
+    <div class="booking-row">
+      <input type="date" class="booking-date">
+      <button onclick="bookCarer('Carer 2')">Book</button>
+    </div>
+  </div>
+
+
+
+</main>
+
+<script>
+  function toggleDrawer() {
+    document.getElementById("drawer").classList.toggle("open");
+  }
+</script>
+
+</body>
+</html>

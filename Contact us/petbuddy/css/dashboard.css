@@ -1,0 +1,233 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background: #cce6ff; /* light blue background */
+  padding-bottom: 20px;
+}
+
+/* Drawer Menu */
+.drawer {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 220px;
+  height: 100%;
+  background: white;
+  box-shadow: 4px 0 12px rgba(0,0,0,0.2);
+  padding: 20px;
+  transition: left 0.3s;
+  z-index: 1000;
+}
+
+.drawer.open {
+  left: 0;
+}
+
+.drawer .close-btn {
+  font-size: 22px;
+  cursor: pointer;
+  display: block;
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+.drawer ul {
+  list-style: none;
+}
+
+.drawer li {
+  padding: 12px 0;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Top Bar */
+.topbar {
+  background: #ffffff;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  position: sticky;
+  top: 0;
+  z-index: 500;
+}
+
+.topbar .hamburger {
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.topbar .logo {
+  font-size: 20px;
+  text-align: center;
+  flex: 1;
+  color: #2c3e50;
+}
+
+.topbar .profile {
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* Container */
+.container {
+  padding: 15px;
+}
+
+/* Welcome */
+.welcome h3 {
+  font-size: 20px;
+  color: #2c3e50;
+  margin-top: 15px;
+}
+
+.welcome p {
+  color: #555;
+  margin-top: 4px;
+  font-size: 14px;
+}
+
+/* Stats Section */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.stat-card {
+  background: white;
+  border-radius: 14px;
+  padding: 14px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+}
+
+.stat-card h2 {
+  font-size: 24px;
+  color: #2c3e50;
+}
+
+.stat-card p {
+  font-size: 12px;
+  color: #555;
+}
+
+/* Quick Actions */
+.quick-title {
+  margin-top: 20px;
+}
+
+.quick-title h4 {
+  font-size: 16px;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.quick-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.quick-card {
+  background: white;
+  border-radius: 14px;
+  padding: 15px;
+  text-align: center;
+  color: #2c3e50;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.quick-card:hover {
+  transform: translateY(-3px);
+}
+
+.quick-card.alert {
+  background: #ffecec;
+}
+
+/* Pet Carer Section */
+.pet-carer-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.carer-card {
+  background: white;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.carer-card h3 {
+  font-size: 15px;
+  color: #2c3e50;
+  margin-bottom: 4px;
+}
+
+.carer-card .status {
+  font-size: 12px;
+  color: #4CAF50;
+  margin-bottom: 10px;
+}
+
+
+
+
+.book-btn {
+  width: 100%;
+  padding: 8px;
+  margin-top: 6px;
+  border: none;
+  background: #4CAF50;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.book-btn:hover {
+  background: #43a047;
+}
+
+.pet-carer-title {
+  margin-top: 20px;
+}
+
+.pet-carer-title h4 {
+  font-size: 16px;
+  color: #2c3e50;
+  margin-bottom: 3px;
+}
+
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+  .stats, .quick-grid, .pet-carer-grid {
+    grid-template-columns: 1fr; /* stack vertically */
+  }
+
+  .topbar .logo {
+    font-size: 18px;
+  }
+}
+
